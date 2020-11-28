@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Ссылки"
+date:   2020-11-27 00:49:40 +0300
+categories: open info
+---
+
+<https://github.com/Ilych/ilych.github.io.git>
+
+<https://gitlab.com/Ilichev/myconf.git>
