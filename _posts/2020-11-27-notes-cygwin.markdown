@@ -47,6 +47,12 @@ apt-cyg:
 /usr/share/doc
 {% endhighlight %} 
 
+Установка Jekyll
+
+	apt-cyg install sqlite3 gcc-g++ make ruby libsqlite3-devel zlib-devel libgdbm-devel openssl-devel libffi-devel
+	gem install jekyll bundler
+
+
 ### **msys2**
 
 <https://mirror.yandex.ru/mirrors/msys2/distrib/x86_64/>
