@@ -52,6 +52,16 @@ apt-cyg:
 	apt-cyg install sqlite3 gcc-g++ make ruby libsqlite3-devel zlib-devel libgdbm-devel openssl-devel libffi-devel
 	gem install jekyll bundler
 
+Запись ISO
+	
+	diskpart
+	DISKPART> list disk
+	DISKPART> select disk=1
+	DISKPART> clean
+	DISKPART> list disk
+	cat /etc/partitions
+	dd if=alt-p9-mate-20200912-x86_64.iso of=/dev/sdb bs=1M status=progress
+	
 
 ### **msys2**
 
