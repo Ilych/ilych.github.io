@@ -20,6 +20,10 @@ categories: open info
 	apt-get install ntfs-3g 
 	apt-get install mc netcat socat
 
+VirtualBox Guest Additions kernel headers and build tools:	
+
+	apt install build-essential dkms linux-headers-$(uname -r)
+
 Драйвер Nvidia:
 
 	apt install nvidia-driver firmware-misc-nonfree 
