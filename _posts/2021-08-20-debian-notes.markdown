@@ -7,16 +7,22 @@ categories: open info
 
 /etc/apt/source.list:
 
-	deb https://mirror.yandex.ru/debian/ bullseye main contrib non-free
-	deb https://mirror.yandex.ru/debian/ bullseye-updates main contrib non-free
+	deb https://mirror.yandex.ru/debian bullseye main contrib non-free
+	deb https://mirror.yandex.ru/debian bullseye-updates main contrib non-free
+	deb https://mirror.yandex.ru/debian-security bullseye-security main contrib non-free
+	# mephi.ru
+	deb http://mirror.mephi.ru/debian bullseye main contrib non-free
+	deb http://mirror.mephi.ru/debian bullseye-updates main contrib non-free
+	deb http://mirror.mephi.ru/debian-security bullseye-security main contrib non-free
 
 Для netinstall:
 
 	apt-get install vim screen sudo network-manager iptables iptables-persistent htop iotop iftop git
 	apt-get install openssh-server
 	apt-get install xserver-xorg xinit 
-	apt-get install mate-desktop-environment 
-	apt-get install gparted pavucontrol guake firefox-esr
+	apt-get install --no-install-recommends mate-desktop-environment pavucontrol firefox-esr
+	apt-get install --reinstall mate-desktop-environment
+	apt-get install gparted guake
 	apt-get install ntfs-3g 
 	apt-get install mc netcat socat
 
