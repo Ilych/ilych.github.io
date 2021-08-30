@@ -52,6 +52,14 @@ apt-cyg:
 	apt-cyg install sqlite3 gcc-g++ make ruby libsqlite3-devel zlib-devel libgdbm-devel openssl-devel libffi-devel
 	gem install jekyll bundler
 
+Запуск Jekyll
+
+	bundle exec jekyll serve
+	
+
+Доступен по адресу: <http://127.0.0.1:4000>
+
+
 Запись ISO
 	
 	diskpart

@@ -5,6 +5,19 @@ date:   2020-11-27 00:49:40 +0300
 categories: jekyll update
 ---
 
+Установка Jekyll на Cygwin
+
+	apt-cyg install sqlite3 gcc-g++ make ruby libsqlite3-devel zlib-devel libgdbm-devel openssl-devel libffi-devel
+	gem install jekyll bundler
+	
+Запуск Jekyll
+
+	bundle exec jekyll serve
+	
+	
+<http://127.0.0.1:4000>
+
+
 Шпаргалка по markdown
 
 <http://ilfire.ru/kompyutery/shpargalka-po-sintaksisu-markdown-markdaun-so-vsemi-samymi-populyarnymi-tegami/#link12>
