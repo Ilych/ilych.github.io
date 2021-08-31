@@ -82,5 +82,5 @@ Virtualbox:
 
 Обновить конфиг пакета:
 
-apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
+	apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
 
