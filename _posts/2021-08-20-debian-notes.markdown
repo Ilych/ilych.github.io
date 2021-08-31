@@ -62,7 +62,7 @@ swap как файл:
 Монтирование ntfs:
 
 	#win
-	/dev/sda3 /mnt/win	ntfs-3g rw,nosuid,noexec,nodev,permissions,relatime,locale=ru_RU.UTF-8,nofail,dmask=002,fmask=0113,uid=1000,gid=1000 0 
+	/dev/sda3 /mnt/win	ntfs-3g rw,windows_names,nosuid,noexec,nodev,permissions,relatime,locale=ru_RU.UTF-8,nofail,dmask=002,fmask=0113,uid=1000,gid=1000 0 
 
 Отключить ctrl-alt-del в консоли:
 	
