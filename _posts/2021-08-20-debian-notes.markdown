@@ -84,3 +84,9 @@ Virtualbox:
 
 	apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
 
+Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
+	
+	nmcli con show e2500275-cc82-3a23-9819-46592799a111 | grep wake
+	nmcli con modify e2500275-cc82-3a23-9819-46592799a111 802-3-ethernet.wake-on-lan magic
+	Сделать 2 перезагрузки.
+
