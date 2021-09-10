@@ -20,8 +20,8 @@ categories: open info
 	apt-get install vim screen sudo network-manager iptables iptables-persistent htop iotop iftop git
 	apt-get install openssh-server
 	apt-get install xserver-xorg xinit 
-	apt-get install --no-install-recommends mate-desktop-environment pavucontrol firefox-esr
-	apt-get install --reinstall mate-desktop-environment
+	apt-get install mate-desktop-environment pavucontrol
+	apt-get install --no-install-recommends firefox-esr
 	apt-get install gparted guake
 	apt-get install ntfs-3g 
 	apt-get install mc netcat socat
