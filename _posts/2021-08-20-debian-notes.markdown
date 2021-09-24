@@ -84,9 +84,29 @@ Virtualbox:
 
 	apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
 
+Сетевой интерфейс eth0, выключение экрана консоли через 5 мин /etc/default/grub:
+
+	GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0 consoleblank=300"
+
 Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
 	
-	nmcli con show e2500275-cc82-3a23-9819-46592799a111 | grep wake
-	nmcli con modify e2500275-cc82-3a23-9819-46592799a111 802-3-ethernet.wake-on-lan magic
+	ethtool eth0 | grep -i wake
+	ethtool -s eth0 wol g
+	
+/etc/network/interfaces:
+	
+	auto br0
+	iface br0 inet dhcp
+        bridge_ports eth0
+        #bridge_hw eth0
+        #bridge_stp off
+        bridge_fd 0
+        bridge_maxwait 0
+		post-up ethtool -s eth0 wol g
+
+NetworkManager:
+	
+	nmcli con show HASH_ID | grep wake
+	nmcli con modify HASH_ID 802-3-ethernet.wake-on-lan magic
 	Сделать 2 перезагрузки.
 
