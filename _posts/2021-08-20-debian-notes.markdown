@@ -75,6 +75,10 @@ swap как файл:
 Темы Guake описаны в /usr/lib/python3/dist-packages/guake/palettes.py. В настройках оформления выбрать тему как основу, затем переключиться на тему "Дополнительно" и поменять
 правую нижнюю палету (Background) на `#2D0922`, правую верхнюю на `#ECF0F1`.
 
+Системное время брать из аппаратных часов:
+
+	hwclock -w --localtime
+
 Virtualbox:
 
 	apt-get install binutils gcc linux-headers-amd64 make
@@ -88,7 +92,7 @@ Virtualbox:
 
 	GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0 consoleblank=300"
 
-Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
+# Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
 	
 	ethtool eth0 | grep -i wake
 	ethtool -s eth0 wol g
