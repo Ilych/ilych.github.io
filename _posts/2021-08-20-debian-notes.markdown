@@ -78,6 +78,10 @@ swap как файл:
 Системное время брать из аппаратных часов:
 
 	hwclock -w --localtime
+	ln -sf /usr/share/zoneinfo/Europe/Moscow  /etc/localtime
+	timedatectl
+
+
 
 Virtualbox:
 
@@ -92,7 +96,7 @@ Virtualbox:
 
 	GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0 consoleblank=300"
 
-# Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
+Включение WOL: <https://wiki.archlinux.org/title/Wake-on-LAN>
 	
 	ethtool eth0 | grep -i wake
 	ethtool -s eth0 wol g
@@ -114,3 +118,14 @@ NetworkManager:
 	nmcli con modify HASH_ID 802-3-ethernet.wake-on-lan magic
 	Сделать 2 перезагрузки.
 
+Виртуальный диск RAW:
+
+	fallocate -l 12G test.img
+	mkfs.ext4 test.img
+	mount -o loop test.img /mnt
+
+Уменьшить RAW диск:
+	
+	resize2fs -M test.img
+	gparted test.img
+	
