@@ -148,6 +148,6 @@ GUI xorg:
 	
 	xhost +local:
 	
-screen <https://losst.ru/komanda-screen-linux>
+screen <https://eax.me/screen/>
 
 tmux <https://losst.ru/shpargalka-po-tmux>
