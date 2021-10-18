@@ -129,3 +129,25 @@ NetworkManager:
 	resize2fs -M test.img
 	gparted test.img
 	
+Модули ядра: <https://losst.ru/moduli-yadra-linux>
+	
+	lsmod | hrep iwlwifi
+	modprobe -r iwldvm
+	modprobe -r iwlwifi
+	modprobe iwlwifi
+	modprobe iwldvm
+	modinfo
+	insmod
+	rmmod
+	
+Добавиться в группу:
+
+	newgrp group
+
+GUI xorg:
+	
+	xhost +local:
+	
+screen <https://losst.ru/komanda-screen-linux>
+
+tmux <https://losst.ru/shpargalka-po-tmux>
