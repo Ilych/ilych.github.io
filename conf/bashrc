@@ -1,0 +1,31 @@
+#### NIK ####
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=15000
+HISTFILESIZE=16000
+
+PROMPT_COMMAND='history -a; history -c; history -r'
+
+# M-, inserts second parameter from end like yank-last-arg (\e. alt+.)
+bind '"\e,": "\e\-\e."'
+
+alias ll='ls -lt'
+
+HISTTIMEFORMAT='%F %T%t'
+
+# Не чувствительные к регистру регекспы
+shopt -s nocaseglob
+
+# export EDITOR=vim
+
+# root@deb
+#PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# nik@deb
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:~/bin

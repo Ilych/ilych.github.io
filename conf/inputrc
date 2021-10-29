@@ -1,0 +1,20 @@
+# for linux console
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+#$if Bash
+  # Don't ring bell on completion
+  set bell-style none
+
+  # or, don't beep at me - show me
+  #set bell-style visible
+
+  # Filename completion/expansion
+  set completion-ignore-case on
+#$endif
+
+# My macro
+# разрывает строку на su -c '', если была нажата комбинация Alt+S
+# "\es":"\C-a su -c '\C-e'\C-m"
+# добавляет в начало команды sudo при нажатии Alt+S
+# "\es":"\C-asudo \C-e"
