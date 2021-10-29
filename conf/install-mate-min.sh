@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update \
-	&& apt-get install -y --no-install-recommends \
+&& { apt-get install -y --no-install-recommends \
 		dbus-x11 \
 		firefox-esr \
 		git \
@@ -13,10 +13,11 @@ apt-get update \
 		guake \
 		mpg123 \
 		openssh-server \
-	&& apt-get remove mate-desktop-environment -y \
-		&& apt-get install mate-desktop-environment -y
-		
-# apt-get install -y xinit
+	
+	apt-get remove mate-desktop-environment -y && apt-get install mate-desktop-environment xinit -y
+	
+	# VBGA
+	apt-get -y install build-essential dkms linux-headers-$(uname -r)
+	
+}
 
-#apt-get remove mate-desktop-environment -y \
-#	&& apt-get install mate-desktop-environment -y
