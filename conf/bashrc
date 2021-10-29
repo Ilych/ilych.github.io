@@ -19,6 +19,7 @@ bind '"\e,": "\e\-\e."'
 
 alias ll='ls -lt'
 alias rm='rm -i'
+alias poweroff='sudo poweroff'
 
 HISTTIMEFORMAT='%F %T%t'
 
