@@ -14,15 +14,14 @@ echo "$homedir"
 
 read -p "Do you want to update .rc files in '$homedir'? y/[n]: " updaterc_yn
 
-if [ "$updaterc_yn" == "y" ]
-then
-	cp -v "$homedir/.bashrc" "$homedir/.bashrc.bak"
+if [ "$updaterc_yn" = "y" ]
+then cp -v "$homedir/.bashrc" "$homedir/bashrc.bak"
 	cat bashrc >> "$homedir/.bashrc"
-	cp -v "$homedir/.inputrc" "$homedir/.inputrc.bak" 
+	cp -v "$homedir/.inputrc" "$homedir/inputrc.bak" 
 	cat inputrc >> "$homedir/.inputrc"
-	cp -v "$homedir/.screenrc" "$homedir/.screenrc.bak"
+	cp -v "$homedir/.screenrc" "$homedir/screenrc.bak"
 	cp -v screenrc "$homedir/.screenrc"
-	cp -v "$homedir/.vimrc" "$homedir/.vimrc.bak"
+	cp -v "$homedir/.vimrc" "$homedir/vimrc.bak"
 	cp -v vimrc "$homedir/.vimrc"
 fi
 
