@@ -3,7 +3,7 @@
 apt-get update \
 	&& DEBIAN_FRONTEND="noninteractive" apt-get install -y --no-install-recommends \
 		dbus-x11 \
-		firefox \
+		firefox-esr \
 		git \
 		pavucontrol \
 		pulseaudio \
@@ -13,11 +13,9 @@ apt-get update \
 		guake \
 		mpg123 \
 		xorgxrdp \
-		xrdp
-		
-apt-get remove mate-desktop-environment -y \
-	&& apt-get install mate-desktop-environment -y
-
+		xrdp \
+	&& apt-get remove mate-desktop-environment -y \
+		&& apt-get install mate-desktop-environment -y
 
 wget 'https://ilych.github.io/distr/xrdp-pulseaudio-installer.tgz'
 
