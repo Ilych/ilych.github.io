@@ -18,6 +18,7 @@ PROMPT_COMMAND='history -a; history -c; history -r'
 bind '"\e,": "\e\-\e."'
 
 alias ll='ls -lt'
+alias rm='rm -i'
 
 HISTTIMEFORMAT='%F %T%t'
 
