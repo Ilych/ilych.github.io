@@ -7,7 +7,7 @@ categories: jekyll update
 
 ### **cygwin**
 
-[cygwin64_min.zip](https://yadi.sk/d/CQl7n0oO8AjGDg) 32MB 2020-11-10
+[cygwin64_min.zip](https://yadi.sk/d/CQl7n0oO8AjGDg) 32MB 2021-10-31
 
 Единый хомяк для всех пользователей: `/etc/nsswitch.conf: db_home:  /home/user`
 
