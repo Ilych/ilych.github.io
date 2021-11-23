@@ -46,9 +46,14 @@ VirtualBox Guest Additions kernel headers and build tools:
 
 	git clone https://gitlab.com/Ilichev/myconf.git
  
-Включить своп при 5% свободной памяти:
+Включить своп при 3% свободной памяти, сброс дискового кэша [https://habr.com/ru/post/458860/]
+/etc/sysctl.conf:
 
-	echo -e 'vm.swappiness=5\nvm.vfs_cache_pressure=10' >> /etc/sysctl.conf
+	vm.swappiness=3
+	vm.vfs_cache_pressure=10
+	vm.dirty_background_bytes = 64001000
+	vm.dirty_bytes = 128001000
+	
 
 Применить изменения без перезагрузки:
 	
@@ -151,3 +156,8 @@ GUI xorg:
 screen <https://eax.me/screen/>
 
 tmux <https://losst.ru/shpargalka-po-tmux>
+
+cat < /dev/tcp/192.168.88.1/22
+
+
+
