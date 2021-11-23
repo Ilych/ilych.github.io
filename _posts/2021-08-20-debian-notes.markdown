@@ -46,7 +46,7 @@ VirtualBox Guest Additions kernel headers and build tools:
 
 	git clone https://gitlab.com/Ilichev/myconf.git
  
-Включить своп при 3% свободной памяти, сброс дискового кэша [https://habr.com/ru/post/458860/]
+Включить своп при 3% свободной памяти, сброс дискового кэша <https://habr.com/ru/post/458860/>
 /etc/sysctl.conf:
 
 	vm.swappiness=3
