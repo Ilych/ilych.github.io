@@ -1,0 +1,2 @@
+useradd -m nik
+
