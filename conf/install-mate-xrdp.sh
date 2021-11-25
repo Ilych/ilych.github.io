@@ -17,9 +17,11 @@ apt-get update \
 	&& apt-get remove mate-desktop-environment -y \
 		&& apt-get install mate-desktop-environment -y
 
-wget 'https://ilych.github.io/distr/xrdp-pulseaudio-installer.tgz'
+#wget 'https://ilych.github.io/distr/xrdp-pulseaudio-installer.tgz'
+wget 'https://ilych.github.io/distr/xrdp-pulseaudio-module.tgz'
 
-tar -C /var/lib -xvf xrdp-pulseaudio-installer.tgz
+#tar -C /var/lib -xvf xrdp-pulseaudio-installer.tgz
+tar -C /usr/lib/pulse-14.2/modules -xvf xrdp-pulseaudio-installer.tgz
 
 sed -i -E 's/^; autospawn =.*/autospawn = yes/' /etc/pulse/client.conf \
     && [ -f /etc/pulse/client.conf.d/00-disable-autospawn.conf ] && sed -i -E 's/^(autospawn=.*)/# \1/' /etc/pulse/client.conf.d/00-disable-autospawn.conf
