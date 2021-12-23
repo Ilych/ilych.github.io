@@ -4,20 +4,20 @@
 NO_ARGS=0
 E_OPTERROR=1
 
-# username="homer"
-homedir="/home/$username"
+default_username="test"
+homedir="/home/$default_username"
 scriptdir=$(dirname "$0")
 workdir=$(readlink -f .)
 
 get_help() 
 {
   echo "Использование: `basename $0` -acdhiu [USERNAME]"
-  echo " -a   выполнить все операции"
-  echo " -c   обновить конфиги"
+  echo " -a USERNAME  выполнить все операции"
+  echo " -c USERNAME  обновить конфиги"
   echo " -d   скачать conf"
   echo " -h   порядок использования"
   echo " -i   установить wget"
-  echo " -u   создать пользователя" 
+  echo " -u USERNAME  создать пользователя" 
 
 }
 
@@ -32,14 +32,23 @@ fi
 # Все опции отключены по умолчанию
 opt_c=0; opt_d=0; opt_i=0; opt_u=0;
 
-while getopts "a:cdhiu:" Option
+while getopts "a:bc:dhiu:" Option
 do
   case $Option in 
-    a ) opt_c=1; opt_d=1; opt_i=1; opt_u=1; opt_u_arg="$OPTARG";;
-    c ) opt_c=1;;
+    a ) opt_c=1; opt_d=1; opt_i=1; opt_u=1; 
+        opt_u_arg="$OPTARG"
+        homedir="/home/$opt_u_arg"
+        ;;
+    c ) opt_c=1
+        opt_u_arg="$OPTARG"
+        homedir="/home/$opt_u_arg"
+        ;;
     d ) opt_d=1;;
     i ) opt_i=1;;
-    u ) opt_u=1; opt_u_arg="$OPTARG";;
+    u ) opt_u=1; 
+        opt_u_arg="$OPTARG"
+        homedir="/home/$opt_u_arg"
+        ;;
     h ) opt_h=1;;
   esac
 done
@@ -70,18 +79,21 @@ fi
 if [ "$opt_d" == "1" ]
 then
   echo "Downloading conf.tgz"
-  cd "$homedir" || { echo "Can't enter to /home/nik" 1>&2; exit 1; }
   wget https://ilych.github.io/conf.tgz || { echo "Error while download conf.tgz" >&2; exit 3; } 
-  tar -xvf "$homedir/conf.tgz"
-  cd "$workdir"
 
 fi
 
  
-if [ "$opt_d" == "1" ]
+if [ "$opt_c" == "1" ]
 then
-  echo "Updating dot files"
+  echo "Updating rc files"
+  # cd "$homedir" || { echo "Can't enter to '$homedir'" 1>&2; exit 1; }
+  [ -w "$homedir" ] || { echo "Directory '$homedir' is not writable" >&2; exit 4; } 
+  [ -r "$workdir/conf.tgz" ] || { echo "File '$workdir/conf.tgz' is not readable" >&2; exit 4; } 
+  echo "Unpacking '$workdir/conf.tgz' to '$homedir'"
+  tar -xf "$workdir/conf.tgz" -C "$homedir"
   bash "$scriptdir/set-user.sh" "$homedir" 
+  # cd "$workdir" || { echo "Can't enter to '$workdir'" 1>&2; exit 1; } 
 fi
 
 

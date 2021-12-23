@@ -20,15 +20,23 @@ cd "$homedir" || { echo "Can't enter '$homedir'" 1>&2; exit 1; }
 
 echo "performing backup of existing dot files"
 
-datestamp=$(date "+%F_%H%M%S")
+filelist=""
 
-tar -czvf "rc-$datestamp.tgz" ".bashrc" ".inputrc" ".screenrc" ".vimrc"
+for f in ".bashrc" ".inputrc" ".screenrc" ".vimrc"
+do 
+  [ -r "$f" ] && filelist="$filelist $f"
+done
 
-readlink -f "rc-$datestamp.tgz"
+if [ ! -z "$filelist" ] 
+then 
+  datestamp=$(date "+%F_%H%M%S")
+  tar -czvf "rc-$datestamp.tgz" $filelist
+  readlink -f "rc-$datestamp.tgz"
+fi
 
 cd "$workdir" || { echo "Can't enter '$workdir'" 1>&2; exit 1; } 
 
-echo "performing copying of dot files"
+echo "performing update of rc files"
 
 cat "$scriptdir/bashrc" >> "$homedir/.bashrc"
 cat "$scriptdir/inputrc" >> "$homedir/.inputrc"
