@@ -29,17 +29,17 @@ then
                           # о порядке использования скрипта
 fi
 
-# Все опции включены по умолчанию
-# opt_c=1; opt_d=1; opt_i=1; opt_u=1;
+# Все опции отключены по умолчанию
+opt_c=0; opt_d=0; opt_i=0; opt_u=0;
 
-while getopts "acdhiu:" Option
+while getopts "a:cdhiu:" Option
 do
   case $Option in 
-    a ) opt_c=1; opt_d=1; opt_i=1; opt_u=1;;
-    c ) opt_c=0;;
-    d ) opt_d=0;;
-    i ) opt_i=0;;
-    u ) opt_u=0; opt_u_arg="$OPTARG";;
+    a ) opt_c=1; opt_d=1; opt_i=1; opt_u=1; opt_u_arg="$OPTARG";;
+    c ) opt_c=1;;
+    d ) opt_d=1;;
+    i ) opt_i=1;;
+    u ) opt_u=1; opt_u_arg="$OPTARG";;
     h ) opt_h=1;;
   esac
 done
@@ -54,6 +54,7 @@ fi
 if [ "$opt_u" == "1" ]
 then
   echo "Performing useradd"
+  
   useradd -m -s /bin/bash "$opt_u_arg"
   chmod 750 "$homedir"
   chmod -R o-rx "$homedir"
