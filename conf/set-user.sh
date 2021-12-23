@@ -10,19 +10,29 @@ fi
 
 homedir=$(readlink -f "$homedir")
 
+scriptdir=$(dirname "$0")
+
 echo "$homedir"
 
-read -p "Do you want to update .rc files in '$homedir'? y/[n]: " updaterc_yn
+workdir=$(readlink -f .)
 
-if [ "$updaterc_yn" = "y" ]
-then cp -v "$homedir/.bashrc" "$homedir/bashrc.bak"
-	cat bashrc >> "$homedir/.bashrc"
-	cp -v "$homedir/.inputrc" "$homedir/inputrc.bak" 
-	cat inputrc >> "$homedir/.inputrc"
-	cp -v "$homedir/.screenrc" "$homedir/screenrc.bak"
-	cp -v screenrc "$homedir/.screenrc"
-	cp -v "$homedir/.vimrc" "$homedir/vimrc.bak"
-	cp -v vimrc "$homedir/.vimrc"
-fi
+cd "$homedir" || { echo "Can't enter '$homedir'" 1>&2; exit 1; } 
+
+echo "performing backup of existing dot files"
+
+datestamp=$(date "+%F_%H%M%S")
+
+tar -czvf "rc-$datestamp.tgz" ".bashrc" ".inputrc" ".screenrc" ".vimrc"
+
+readlink -f "rc-$datestamp.tgz"
+
+cd "$workdir" || { echo "Can't enter '$workdir'" 1>&2; exit 1; } 
+
+echo "performing copying of dot files"
+
+cat "$scriptdir/bashrc" >> "$homedir/.bashrc"
+cat "$scriptdir/inputrc" >> "$homedir/.inputrc"
+cp "$scriptdir/screenrc" "$homedir/.screenrc"
+cp "$scriptdir/vimrc" "$homedir/.vimrc"
 
 exit 0
