@@ -4,20 +4,20 @@
 NO_ARGS=0
 E_OPTERROR=1
 
-username="homer"
+# username="homer"
 homedir="/home/$username"
 scriptdir=$(dirname "$0")
 workdir=$(readlink -f .)
 
 get_help() 
 {
-  echo "Использование: `basename $0` -acdiu"
+  echo "Использование: `basename $0` -acdhiu [USERNAME]"
   echo " -a   выполнить все операции"
-  echo " -c   не обновлять конфиги"
-  echo " -d   не скачивать conf"
+  echo " -c   обновить конфиги"
+  echo " -d   скачать conf"
   echo " -h   порядок использования"
-  echo " -i   не устанавливать wget"
-  echo " -u   не создавать пользователя" 
+  echo " -i   установить wget"
+  echo " -u   создать пользователя" 
 
 }
 
@@ -30,16 +30,16 @@ then
 fi
 
 # Все опции включены по умолчанию
-opt_c=1; opt_d=1; opt_i=1; opt_u=1;
+# opt_c=1; opt_d=1; opt_i=1; opt_u=1;
 
-while getopts "acdhiu" Option
+while getopts "acdhiu:" Option
 do
   case $Option in 
-    a ) ;;
+    a ) opt_c=1; opt_d=1; opt_i=1; opt_u=1;;
     c ) opt_c=0;;
     d ) opt_d=0;;
     i ) opt_i=0;;
-    u ) opt_u=0;;
+    u ) opt_u=0; opt_u_arg="$OPTARG";;
     h ) opt_h=1;;
   esac
 done
@@ -54,7 +54,7 @@ fi
 if [ "$opt_u" == "1" ]
 then
   echo "Performing useradd"
-  useradd -m -s /bin/bash "$username"
+  useradd -m -s /bin/bash "$opt_u_arg"
   chmod 750 "$homedir"
   chmod -R o-rx "$homedir"
 fi
