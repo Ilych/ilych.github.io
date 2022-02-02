@@ -9,9 +9,11 @@ categories: open info
 
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
-# Делать вот так
-git checkout -b feature_release_2020-3 origin/feature_release_2020-3
+# Делать вот так:
 
+	git checkout -b feature_release_2020-3 origin/feature_release_2020-3
+
+{% highlight bash %}
 git add .
 git status
 git commit
@@ -19,6 +21,7 @@ git log --oneline --name-only --name-status
 git status	
 git branch
 git push --set-upstream origin otcfix_config
+{% endhighlight %}
 
 # Сохранить коммиты в отдельную ветку
 git branch new-branch-to-save-current-commits

@@ -5,46 +5,45 @@ date:   2022-02-01 18:00:00 +0300
 categories: open info
 ---
 
-Обои рабочего стола в Onedrive
-
-  https://1drv.ms/u/s!Ai-lcrKZCi2olgcurjZTXNeeciOP?e=thQfos
+Обои рабочего стола в Onedrive <https://1drv.ms/u/s!Ai-lcrKZCi2olgcurjZTXNeeciOP?e=thQfos>
 
 
 
 
-Восстановление системного образа Windows
+Восстановление системного образа Windows:
 
-Get-ComputerInfo | select WindowsProductname,WindowsEditionID,WindowsVersion, OSDisplayVersion
+`Get-ComputerInfo | select WindowsProductname,WindowsEditionID,WindowsVersion, OSDisplayVersion`
 
-Get-WindowsImage -ImagePath "E:\sources\install.wim"
+	Get-WindowsImage -ImagePath "E:\sources\install.wim"
+	ImageIndex       : 1
+	ImageName        : Windows Server 2016 SERVERSTANDARDCORE
+	ImageDescription : Windows Server 2016 SERVERSTANDARDCORE
+	ImageSize        : 9 481 916 907 bytes
 
-ImageIndex       : 1
-ImageName        : Windows Server 2016 SERVERSTANDARDCORE
-ImageDescription : Windows Server 2016 SERVERSTANDARDCORE
-ImageSize        : 9 481 916 907 bytes
-
-ImageIndex       : 2
-ImageName        : Windows Server 2016 SERVERSTANDARD
-ImageDescription : Windows Server 2016 SERVERSTANDARD
-ImageSize        : 15 560 241 110 bytes
+	ImageIndex       : 2
+	ImageName        : Windows Server 2016 SERVERSTANDARD
+	ImageDescription : Windows Server 2016 SERVERSTANDARD
+	ImageSize        : 15 560 241 110 bytes
 
 
-dism /online /cleanup-image /restorehealth /source:WIM:E:\sources\install.wim:2 /limitaccess
+`dism /online /cleanup-image /restorehealth /source:WIM:E:\sources\install.wim:2 /limitaccess`
 
-sfc /scannow
+`sfc /scannow`
 
-dism /online /cleanup-image /analyzecomponentstore
+размер хранилища компонентов:
 
-Фактический размер хранилища компонентов : 17.06 GB
+	dism /online /cleanup-image /analyzecomponentstore
 
-    Совместно с Windows : 6.76 GB
-    Резервные копии и отключенные компоненты : 7.41 GB
-    Кэш и временные данные : 2.88 GB
+	Фактический размер хранилища компонентов : 17.06 GB
 
-Число освобождаемых пакетов : 2
-Рекомендуется очистка хранилища компонентов : Да
+			Совместно с Windows : 6.76 GB
+			Резервные копии и отключенные компоненты : 7.41 GB
+			Кэш и временные данные : 2.88 GB
 
-dism /online /cleanup-image /startcomponentcleanup
+	Число освобождаемых пакетов : 2
+	Рекомендуется очистка хранилища компонентов : Да
+
+`dism /online /cleanup-image /startcomponentcleanup`
 
 ===================================
 
