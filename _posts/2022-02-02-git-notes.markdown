@@ -5,11 +5,11 @@ date:   2022-02-02 18:00:00 +0300
 categories: open info
 ---
 
-# Git completion
+Git completion [git-completion.bash](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash):
 
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
-# Делать вот так:
+Делать вот так:
 
 	git checkout -b feature_release_2020-3 origin/feature_release_2020-3
 
@@ -23,56 +23,62 @@ git branch
 git push --set-upstream origin otcfix_config
 {% endhighlight %}
 
-# Сохранить коммиты в отдельную ветку
-git branch new-branch-to-save-current-commits
+Сохранить коммиты в отдельную ветку:
 
-# Создать ветку и переключиться в неё
+	git branch new-branch-to-save-current-commits
 
-  git checkout -b new_branch
+Создать ветку и переключиться в неё:
 
-# Переписать все локальные файлы
-git fetch --all 
-git reset --hard origin/master
+	git checkout -b new_branch
 
-# Сравнение различий между ветками
+Переписать все локальные файлы:
 
-  git diff branch_1 branch_2 file
-  git diff --name-status branch_1 branch_2 file
+	git fetch --all 
+	git reset --hard origin/master
 
-# Убрать файл из подготовки к коммиту (staged)
-git reset HEAD templates/MOEXIndices_test.ini.j2
+Сравнение различий между ветками:
 
-# Отменяет последний коммит
-git reset HEAD^
+	git diff branch_1 branch_2 file
+	git diff --name-status branch_1 branch_2 file
 
-# чтобы не включать изменения в debug в MR мне их не надо было вставлять в коммиты ветки. 
-# чтобы не включать изменения в debug в MR можно сделать revert этим коммитам
-# оно добавит в историю коммит с обратными изменениями
+Убрать файл из подготовки к коммиту (staged):
 
-# Сброс локальных изменений в файле
-git checkout file
+	git reset HEAD templates/MOEXIndices_test.ini.j2
 
-# error: Указанные неотслеживаемые файлы в рабочем каталоге будут перезаписаны при слиянии:
-# Переместите эти файлы или удалите их перед переключением веток.
-git clean -d -n
+Отменяет последний коммит:
 
-Check out, review, and merge locally
+	git reset HEAD^
+
+Чтобы не включать изменения в debug в MR мне их не надо было вставлять в коммиты ветки. 
+Чтобы не включать изменения в debug в MR можно сделать revert этим коммитам, оно добавит в историю коммит с обратными изменениями.
+
+Сброс локальных изменений в файле:
+	
+	git checkout file
+
+Переместите эти файлы или удалите их перед переключением веток.
+error: Указанные неотслеживаемые файлы в рабочем каталоге будут перезаписаны при слиянии:
+
+	git clean -d -n
+
+### Check out, review, and merge locally
 
 Step 1. Fetch and check out the branch for this merge request
 
-git fetch origin
-git checkout -b otcfix_config origin/otcfix_config
+	git fetch origin
+	git checkout -b otcfix_config origin/otcfix_config
 
 Step 2. Review the changes locally
 
 Step 3. Merge the branch and fix any conflicts that come up
 
-git checkout master
-git merge --no-ff otcfix_config
+	git checkout master
+	git merge --no-ff otcfix_config
 
 Step 4. Push the result of the merge to GitLab
 
-git push origin master
+	git push origin master
+	
 
 
 
