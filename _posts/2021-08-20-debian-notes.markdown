@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Заметки про Debian"
-date:   2020-11-27 00:49:40 +0300
+date:   2021-08-20 00:49:40 +0300
 categories: open info
 ---
 
