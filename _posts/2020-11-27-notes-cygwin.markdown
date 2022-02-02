@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Заметки про Cygwin"
-date:   2020-11-27 00:49:40 +0300
+date:   2020-11-29 00:49:40 +0300
 categories: jekyll update
 ---
 
