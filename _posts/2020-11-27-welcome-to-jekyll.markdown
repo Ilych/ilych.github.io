@@ -18,11 +18,14 @@ categories: jekyll update
 <http://127.0.0.1:4000>
 
 
-Шпаргалка по markdown
+## Шпаргалка по markdown
+
+<http://konvut.github.io/k50articles/>
 
 <http://ilfire.ru/kompyutery/shpargalka-po-sintaksisu-markdown-markdaun-so-vsemi-samymi-populyarnymi-tegami/#link12>
 
-Переопределение параметров темы
+
+# Переопределение параметров темы
 
 <https://jekyllrb.com/docs/themes/#overriding-theme-defaults>
 

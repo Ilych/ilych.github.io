@@ -102,7 +102,7 @@ swap как файл:
 Отключить спикер пищалку
 inputrc:
 
-  set bell-style none
+	set bell-style none
 
 или
 
