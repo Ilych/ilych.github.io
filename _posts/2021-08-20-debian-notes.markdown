@@ -64,7 +64,11 @@ swap как файл:
 	
 	fallocate -l 8G /var/swapfile; mkswap /var/swapfile; chmod 600 /var/swapfile; swapon /var/swapfile; 
 	echo -e '#swap\n/var/swapfile none swap sw 0 0' >> /etc/fstab
-
+	
+	vim /etc/initramfs-tools/conf.d/resume
+	RESUME=UUID=1120fd83-f310-4449-8d2e-677713c9d9dd
+	sudo update-initramfs -u
+	
 Монтирование ntfs:
 
 	#win
