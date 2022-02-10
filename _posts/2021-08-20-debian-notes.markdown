@@ -164,5 +164,7 @@ tmux <https://losst.ru/shpargalka-po-tmux>
 
 cat < /dev/tcp/192.168.88.1/22
 
+dpkg /var/lib/dpkg/info/
+
 
 
