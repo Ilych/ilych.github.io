@@ -57,6 +57,7 @@ error: Указанные неотслеживаемые файлы в рабо�
 
 	git clean -d -n
 
+{% highlight git %}
 # Check out, review, and merge locally
 
 Step 1. Fetch and check out the branch for this merge request
@@ -74,12 +75,12 @@ Step 3. Merge the branch and fix any conflicts that come up
 Step 4. Push the result of the merge to GitLab
 
 	git push origin master
-	
+{% endhighlight %}
 
 
 Git completion [git-completion.bash](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash):
 
-	curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+	curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 ~/.gitconfig:
 {% highlight bash %}
