@@ -80,7 +80,7 @@ swap как файл:
 
 Изменить разрешение консоли tty без перезагрузки:
 	
-	sudo fbset -xres 1024 -yres 768
+	sudo fbset -xres 1920 -yres 975
 	
 /etc/default/grub:
 	
