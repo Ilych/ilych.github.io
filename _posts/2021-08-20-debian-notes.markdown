@@ -76,13 +76,57 @@ swap как файл:
 	#win
 	/dev/sda3 /mnt/win	ntfs-3g rw,windows_names,nosuid,noexec,nodev,permissions,relatime,locale=ru_RU.UTF-8,nofail,dmask=002,fmask=0113,uid=1000,gid=1000 0 
 
+### Консоль 
+
+Изменить разрешение консоли tty без перезагрузки:
+	
+	sudo fbset -xres 1024 -yres 768
+	
+/etc/default/grub:
+	
+	#GRUB_GFXMODE=640x480
+	
+	GRUB_CMDLINE_LINUX_DEFAULT="splash quiet vga=XXX nomodeset"
+	
+	Color
+	Depth  800x600 1024x768 1152x864 1280x1024 1600x1200
+	8  bit vga=771 vga=773  vga=353  vga=775   vga=796
+	16 bit vga=788 vga=791  vga=355  vga=794   vga=798
+	24 bit vga=789 vga=792  vga=795  vga=799
+
+
 Отключить ctrl-alt-del в консоли:
 	
 	sudo systemctl mask ctrl-alt-del.target
 
-Отключить пищалку:
+Отключить спикер пищалку
+inputrc:
+
+  set bell-style none
+
+или
 
 	echo 'blacklist pcspkr' >> /etc/modprobe.d/pcspkr.blacklist
+
+inputrc:
+{% highlight bash %}
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+# Don't ring bell on completion
+set bell-style none
+
+# or, don't beep at me - show me
+#set bell-style visible
+
+# Filename completion/expansion
+set completion-ignore-case on
+
+# разрывает строку на su -c '', если была нажата комбинация Alt+S
+"\es":"\C-a su -c '\C-e'\C-m"
+# добавляет в начало команды sudo при нажатии Alt+S
+# "\es":"\C-asudo \C-e"
+{% endhighlight %}
 
 Темы Guake описаны в /usr/lib/python3/dist-packages/guake/palettes.py. В настройках оформления выбрать тему как основу, затем переключиться на тему "Дополнительно" и поменять
 правую нижнюю палету (Background) на `#2D0922`, правую верхнюю на `#ECF0F1`.
