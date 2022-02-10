@@ -68,7 +68,9 @@ swap как файл:
 	vim /etc/initramfs-tools/conf.d/resume
 	RESUME=UUID=1120fd83-f310-4449-8d2e-677713c9d9dd
 	sudo update-initramfs -u
-	
+
+Статья на habr [В защиту swap'а [в Linux]: распространенные заблуждения](https://habr.com/ru/company/flant/blog/348324/)
+
 Монтирование ntfs:
 
 	#win
