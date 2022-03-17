@@ -5,6 +5,12 @@ date:   2021-08-20 00:49:40 +0300
 categories: open info
 ---
 
+Настройки
+
+	wget ilych.github.io/files/conf.tg
+	./conf/set-user.sh
+
+
 /etc/apt/source.list:
 
 	deb https://mirror.yandex.ru/debian bullseye main contrib non-free
