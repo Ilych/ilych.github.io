@@ -22,7 +22,9 @@ builder    create     history    kill       network    pull       run        sta
 commit     diff       image      load       node       push       save       stats      trust
 config     events     images     login      pause      rename     search     stop       unpause
 container  exec       import     logout     plugin     restart    secret     swarm      update
-
+```
+Примеры
+``` text
 docker pull scottyhardy/docker-remote-desktop
 docker search curl
 docker run --network ipvnet -i -t debian
