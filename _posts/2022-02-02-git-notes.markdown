@@ -5,6 +5,12 @@ date:   2022-02-02 18:00:00 +0300
 categories: open info
 ---
 
+Подтянуть изменения из основного репозитория в fork
+``` text
+git remote add parent <ссылка на родительский репозиторий>
+git pull parent <ветка>
+```
+
 Делать вот так:
 
 	git checkout -b feature_release_2020-3 origin/feature_release_2020-3
