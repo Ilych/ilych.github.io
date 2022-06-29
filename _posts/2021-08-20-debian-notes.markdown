@@ -218,5 +218,7 @@ cat < /dev/tcp/192.168.88.1/22
 
 dpkg /var/lib/dpkg/info/
 
-
+apt install ./package.deb
+apt-listchanges ./cnijfilter2_5.60-1_amd64.deb
+apt changelog package
 
