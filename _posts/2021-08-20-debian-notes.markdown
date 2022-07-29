@@ -209,6 +209,11 @@ NetworkManager:
 GUI xorg:
 	
 	xhost +local:
+
+X11 connection rejected because of wrong authentication.
+Error: Can't open display: localhost:10.0
+
+	export XAUTHORITY=/home/nik/.Xauthority
 	
 screen <https://eax.me/screen/>
 
