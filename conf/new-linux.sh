@@ -79,7 +79,7 @@ fi
 if [ "$opt_d" == "1" ]
 then
   echo "Downloading conf.tgz"
-  wget https://ilych.github.io/conf.tgz || { echo "Error while download conf.tgz" >&2; exit 3; } 
+  wget -q https://ilych.github.io/files/conf.tgz || { echo "Error while download conf.tgz" >&2; exit 3; } 
 
 fi
 
