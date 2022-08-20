@@ -165,6 +165,9 @@ Virtualbox:
 	
 /etc/network/interfaces:
 	
+	auto eth0
+	iface eth0 inet manual
+
 	auto br0
 	iface br0 inet dhcp
 		bridge_ports eth0
@@ -226,4 +229,8 @@ dpkg /var/lib/dpkg/info/
 apt install ./package.deb
 apt-listchanges ./cnijfilter2_5.60-1_amd64.deb
 apt changelog package
+
+Отключение IPv6 sysctl.conf
+
+	net.ipv6.conf.br0.disable_ipv6 = 1
 
