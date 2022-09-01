@@ -7,7 +7,7 @@ categories: open info
 
 Настройки
 
-	wget ilych.github.io/files/conf.tg
+	wget ilych.github.io/files/conf.tgz
 	./conf/set-user.sh
 
 
@@ -234,3 +234,7 @@ apt changelog package
 
 	net.ipv6.conf.br0.disable_ipv6 = 1
 
+Шрифты 
+
+  cp Windows/Fonts/font.ttf ~/.local/share/fonts
+  fc-cache -f -v
