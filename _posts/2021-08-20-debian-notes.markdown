@@ -150,9 +150,17 @@ Virtualbox:
 	apt-get install binutils gcc linux-headers-amd64 make
 	./VirtualBox-6.1.26-145957-Linux_amd64.run	
 
+### apt
+``` text
 Обновить конфиг пакета:
+apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
 
-	apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
+Удаление пакета без учёта зависимостей
+sudo dpkg --ignore-depends=network-manager-gnome -r network-manager
+
+apt install ./package.deb
+
+```
 
 Сетевой интерфейс eth0, выключение экрана консоли через 5 мин /etc/default/grub:
 
@@ -213,6 +221,21 @@ GUI xorg:
 	
 	xhost +local:
 
+# Пересборка бинарного deb пакета
+убрать ошибку отсутствующих зависимостей apt --fix-broken install 
+
+``` bash
+ar xv --output=zoom ./zoom_amd64.deb
+cd zoom
+tar -xvf data.tar.xz -C zzz
+mkdir zzz/DEBIAN
+tar -xvf control.tar.xz -C zzz/DEBIAN
+vim zzz/DEBIAN/control
+	# убираю зависимость ibus
+dpkg-deb --build zzz
+apt-get install ./zzz.deb
+```
+
 X11 connection rejected because of wrong authentication.
 Error: Can't open display: localhost:10.0
 
@@ -236,5 +259,10 @@ apt changelog package
 
 Шрифты 
 
-  cp Windows/Fonts/font.ttf ~/.local/share/fonts
-  fc-cache -f -v
+	cp Windows/Fonts/font.ttf ~/.local/share/fonts
+	fc-cache -f -v
+
+pluma admin:///etc/fonts/local.conf
+
+
+
