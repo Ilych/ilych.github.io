@@ -213,7 +213,7 @@ NetworkManager:
 	insmod
 	rmmod
 	
-Добавиться в группу:
+Добавиться в группу в новом SHELL:
 
 	newgrp group
 
@@ -225,15 +225,16 @@ GUI xorg:
 убрать ошибку отсутствующих зависимостей apt --fix-broken install 
 
 ``` bash
+dpkg-deb -x package.deb package
+dpkg-deb -e package.deb package/DEBIAN
+vim package/DEBIAN/control
+dpkg-deb --build package
+
+# зафиксировать версию пакета
+apt-mark hold package
+
+# распаковка deb как архива 
 ar xv --output=zoom ./zoom_amd64.deb
-cd zoom
-tar -xvf data.tar.xz -C zzz
-mkdir zzz/DEBIAN
-tar -xvf control.tar.xz -C zzz/DEBIAN
-vim zzz/DEBIAN/control
-	# убираю зависимость ibus
-dpkg-deb --build zzz
-apt-get install ./zzz.deb
 ```
 
 X11 connection rejected because of wrong authentication.
