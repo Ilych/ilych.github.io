@@ -160,7 +160,25 @@ sudo dpkg --ignore-depends=network-manager-gnome -r network-manager
 
 apt install ./package.deb
 
+apt-listchanges ./package.deb
+apt changelog package
 ```
+#### Пересборка бинарного deb пакета
+убрать ошибку отсутствующих зависимостей apt --fix-broken install 
+
+``` bash
+dpkg-deb -x package.deb package
+dpkg-deb -e package.deb package/DEBIAN
+vim package/DEBIAN/control
+dpkg-deb --build package
+
+# зафиксировать версию пакета
+apt-mark hold package
+
+# распаковка deb как архива 
+ar xv --output=zoom ./zoom_amd64.deb
+```
+dpkg /var/lib/dpkg/info/
 
 Сетевой интерфейс eth0, выключение экрана консоли через 5 мин /etc/default/grub:
 
@@ -221,22 +239,6 @@ GUI xorg:
 	
 	xhost +local:
 
-# Пересборка бинарного deb пакета
-убрать ошибку отсутствующих зависимостей apt --fix-broken install 
-
-``` bash
-dpkg-deb -x package.deb package
-dpkg-deb -e package.deb package/DEBIAN
-vim package/DEBIAN/control
-dpkg-deb --build package
-
-# зафиксировать версию пакета
-apt-mark hold package
-
-# распаковка deb как архива 
-ar xv --output=zoom ./zoom_amd64.deb
-```
-
 X11 connection rejected because of wrong authentication.
 Error: Can't open display: localhost:10.0
 
@@ -248,12 +250,6 @@ tmux <https://losst.ru/shpargalka-po-tmux>
 
 cat < /dev/tcp/192.168.88.1/22
 
-dpkg /var/lib/dpkg/info/
-
-apt install ./package.deb
-apt-listchanges ./cnijfilter2_5.60-1_amd64.deb
-apt changelog package
-
 Отключение IPv6 sysctl.conf
 
 	net.ipv6.conf.br0.disable_ipv6 = 1
@@ -262,6 +258,15 @@ apt changelog package
 
 	cp Windows/Fonts/font.ttf ~/.local/share/fonts
 	fc-cache -f -v
+
+chmod bits
+
+  01000  sticky bit, restricted deletion
+  02000  set-group-ID
+  04000  set-user-ID
+  00100  execute/search by owner
+  00200  write by owner
+  00400  read by owner
 
 pluma admin:///etc/fonts/local.conf
 
