@@ -143,8 +143,6 @@ set completion-ignore-case on
 	ln -sf /usr/share/zoneinfo/Europe/Moscow  /etc/localtime
 	timedatectl
 
-
-
 Virtualbox:
 
 	apt-get install binutils gcc linux-headers-amd64 make
@@ -174,6 +172,7 @@ dpkg-deb --build package
 
 # зафиксировать версию пакета
 apt-mark hold package
+  unhold showhold 
 
 # распаковка deb как архива 
 ar xv --output=zoom ./zoom_amd64.deb
@@ -270,5 +269,37 @@ chmod bits
 
 pluma admin:///etc/fonts/local.conf
 
+Проверка на spectre/meltdown
+  
+  git clone https://github.com/speed47/spectre-meltdown-checker.git
+  ./spectre-meltdown-checker.sh --disclaimer
+  sudo spectre-meltdown-checker.sh
+
+Разные программы
+  
+ 	zerofree - finds the unallocated blocks with non-zero value content in and fills them with zeroes.
+ 	ncdu     - is a ncurses-based du viewer.
+ 	plocate mlocate
+
+fstab
+
+	#swap
+	/var/swapfile none swap sw 0 0
+
+	#win
+	/dev/sda7 /mnt/media	ntfs-3g rw,windows_names,nosuid,noexec,nodev,permissions,relatime,locale=ru_RU.UTF-8,nofail,dmask=002,fmask=0113,uid=1000,gid=1000 0
+
+	# ext_media
+	UUID="5a7d969f-ca30-478f-b254-1669fabf2da1" /mnt/ext	ext4	relatime,errors=remount-ro 0	0
+
+	# TNAS samba
+	//tnas.local/smb /mnt/smb cifs	noauto,x-systemd.automount,x-systemd.mount-timeout=10,x-systemd.device-timeout=30,_netdev,x-systemd.idle-timeout=1min,relatime,vers=3.11,nobrl,cred=/home/user/.config/creds/samba.txt,users,noexec,rw,file_mode=0664,uid=user,gid=libvirt-qemu,dir_mode=0775  
+
+systemd automount
+
+	fstab: noauto,x-systemd.automount,x-systemd.mount-timeout=10,x-systemd.device-timeout=30,_netdev,x-systemd.idle-timeout=1min
+	systemctl daemon-reload
+	systemctl restart remote-fs.target or systemctl restart local-fs.target
 
 
+Про Debian: <>
