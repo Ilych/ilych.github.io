@@ -26,7 +26,8 @@ categories: open info
 	apt-get install vim screen sudo network-manager iptables iptables-persistent htop iotop iftop git
 	apt-get install openssh-server
 	apt-get install xserver-xorg xinit 
-	apt-get install mate-desktop-environment pavucontrol
+	apt-get install mate-desktop-environment pavucontrol  
+  apt-get install gnome-firmware mate-time-admin mate-power-statistics mate-system-log
 	apt-get install --no-install-recommends firefox-esr
 	apt-get install gparted guake
 	apt-get install ntfs-3g 
@@ -229,6 +230,22 @@ NetworkManager:
 	modinfo
 	insmod
 	rmmod
+  
+  modprobe -c
+  /lib/modules
+  /lib/modules/modules.aliases
+
+Зависает при загрузке при установке primus:
+  
+  Добавить в параметры ядра:
+  wmlinuz ... 3
+
+  Изменить порядок загрузки bumblebeed.service, например, после nvidia-persistenced.service:
+  [Unit]
+  Description=Bumblebee C Daemon
+  After=nvidia-persistenced.service
+
+  systemctl daemon-reload
 	
 Добавиться в группу в новом SHELL:
 
