@@ -7,7 +7,7 @@ categories: jekyll update
 
 ### **cygwin**
 
-[cygwin64_min.zip](https://yadi.sk/d/CQl7n0oO8AjGDg) 32MB 2021-10-31
+[cygwin64_min.zip](https://yadi.sk/d/CQl7n0oO8AjGDg) 43MB 2023-01-21
 
 Единый хомяк для всех пользователей: `/etc/nsswitch.conf: db_home:  /home/user`
 
@@ -21,7 +21,7 @@ categories: jekyll update
 
 apt-cyg:
 	
-	curl https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg -o apt-cyg
+	wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
 	/etc/setup/setup.rc
 	https://mirror.yandex.ru/mirrors/ftp.cygwin.com/x86_64/setup.ini
 
@@ -32,7 +32,7 @@ apt-cyg:
 Чистка 
 {% highlight shell %}
 /usr/share/locale
-	ls | grep -v ru | xargs rm -rf
+	ls | grep -v ru | xargs rm -rf -v 
 
 /usr/share/terminfo
 /usr/lib/terminfo
