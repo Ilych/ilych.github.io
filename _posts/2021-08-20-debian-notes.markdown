@@ -318,5 +318,8 @@ systemd automount
 	systemctl daemon-reload
 	systemctl restart remote-fs.target or systemctl restart local-fs.target
 
+bind
+ 
+	bind '"\e[5~": history-search-backward'; bind '"\e[6~": history-search-forward'
 
 Про Debian: <>
