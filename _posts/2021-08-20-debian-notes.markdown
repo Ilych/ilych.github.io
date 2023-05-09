@@ -323,3 +323,5 @@ bind
 	bind '"\e[5~": history-search-backward'; bind '"\e[6~": history-search-forward'
 
 Про Debian: <>
+
+Шпаргалка начинающего Debian/Ubuntu администратора по управлению пакетами <https://habr.com/ru/articles/150131/>
