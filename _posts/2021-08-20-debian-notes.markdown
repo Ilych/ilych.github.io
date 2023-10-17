@@ -9,25 +9,29 @@ categories: open info
 
 	wget ilych.github.io/files/conf.tgz
 	./conf/set-user.sh
-
+	wget ilych.github.io/files/my_icons_cursors.tar.gz
 
 /etc/apt/source.list:
 
-	deb https://mirror.yandex.ru/debian bullseye main contrib non-free
-	deb https://mirror.yandex.ru/debian bullseye-updates main contrib non-free
-	deb https://mirror.yandex.ru/debian-security bullseye-security main contrib non-free
-	# mephi.ru
+	# mephi.ru 12
+	deb http://mirror.mephi.ru/debian bookworm main contrib non-free non-free-firmware
+	deb http://mirror.mephi.ru/debian bookworm-updates main contrib non-free non-free-firmware
+	deb http://mirror.mephi.ru/debian-security bookworm-security main contrib non-free non-free-firmware
+	deb http://mirror.mephi.ru/debian bookworm-backports main contrib non-free non-free-firmware
+	# mephi.ru 11
 	deb http://mirror.mephi.ru/debian bullseye main contrib non-free
 	deb http://mirror.mephi.ru/debian bullseye-updates main contrib non-free
 	deb http://mirror.mephi.ru/debian-security bullseye-security main contrib non-free
+	deb http://mirror.mephi.ru/debian bullseye-backports main contrib non-free 
+
 
 Для netinstall:
 
 	apt-get install vim screen sudo network-manager iptables iptables-persistent htop iotop iftop git
 	apt-get install openssh-server
 	apt-get install xserver-xorg xinit 
-	apt-get install mate-desktop-environment pavucontrol  
-  apt-get install gnome-firmware mate-time-admin mate-power-statistics mate-system-log
+	apt-get install mate-desktop-environment pavucontrol
+	apt-get install gnome-firmware mate-time-admin mate-power-statistics mate-system-log
 	apt-get install --no-install-recommends firefox-esr
 	apt-get install gparted guake
 	apt-get install ntfs-3g 
@@ -144,6 +148,8 @@ set completion-ignore-case on
 	ln -sf /usr/share/zoneinfo/Europe/Moscow  /etc/localtime
 	timedatectl
 
+
+
 Virtualbox:
 
 	apt-get install binutils gcc linux-headers-amd64 make
@@ -152,6 +158,7 @@ Virtualbox:
 ### apt
 ``` text
 Обновить конфиг пакета:
+
 apt-get -o DPkg::options::=--force-confmiss --reinstall install bluez
 
 Удаление пакета без учёта зависимостей
@@ -325,3 +332,28 @@ bind
 Про Debian: <>
 
 Шпаргалка начинающего Debian/Ubuntu администратора по управлению пакетами <https://habr.com/ru/articles/150131/>
+
+# Clipboard
+xclip
+
+Upgrade =====
+
+https://www.opennet.ru/openforum/vsluhforumID3/130723.html#228
+
+Только что обновился, делал так:
+Полностью обновляем систему.
+
+Меняем source.list 
+И добавляем в него non-free-firmware
+
+Потом в таком порядке: 
+apt upgrade --without-new-pkgs 
+apt upgrade 
+apt full-upgrade
+
+На конфликты: 
+apt --fix-broken install
+
+Если тупо сделать full-upgrade сразу, тогда --fix-broken install не решает. 
+
+=====
