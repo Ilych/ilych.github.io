@@ -295,9 +295,9 @@ pluma admin:///etc/fonts/local.conf
 
 Проверка на spectre/meltdown
   
-  git clone https://github.com/speed47/spectre-meltdown-checker.git
-  ./spectre-meltdown-checker.sh --disclaimer
-  sudo spectre-meltdown-checker.sh
+	git clone https://github.com/speed47/spectre-meltdown-checker.git
+	./spectre-meltdown-checker.sh --disclaimer
+	sudo spectre-meltdown-checker.sh
 
 Разные программы
   
@@ -336,27 +336,23 @@ bind
 # Clipboard
 xclip
 
-Upgrade =====
+# Upgrade <https://www.opennet.ru/openforum/vsluhforumID3/130723.html#228>
 
-https://www.opennet.ru/openforum/vsluhforumID3/130723.html#228
+	Только что обновился, делал так:
+	Полностью обновляем систему.
 
-Только что обновился, делал так:
-Полностью обновляем систему.
+	Меняем source.list 
+	И добавляем в него non-free-firmware
 
-Меняем source.list 
-И добавляем в него non-free-firmware
+	Потом в таком порядке: 
+	apt upgrade --without-new-pkgs 
+	apt upgrade 
+	apt full-upgrade
 
-Потом в таком порядке: 
-apt upgrade --without-new-pkgs 
-apt upgrade 
-apt full-upgrade
+	На конфликты: 
+	apt --fix-broken install
 
-На конфликты: 
-apt --fix-broken install
-
-Если тупо сделать full-upgrade сразу, тогда --fix-broken install не решает. 
-
-=====
+	Если тупо сделать full-upgrade сразу, тогда --fix-broken install не решает. 
 
 # Тест дисков sdcard
 
