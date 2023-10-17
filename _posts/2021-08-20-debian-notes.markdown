@@ -9,7 +9,8 @@ categories: open info
 
 	wget ilych.github.io/files/conf.tgz
 	./conf/set-user.sh
-	wget ilych.github.io/files/my_icons_cursors.tar.gz
+	wget ilych.github.io/files/icons_mytheme.tar.gz
+	wget ilych.github.io/files/themes_myMenta.tar.gz
 
 /etc/apt/source.list:
 
