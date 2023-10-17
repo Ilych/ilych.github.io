@@ -284,12 +284,12 @@ cat < /dev/tcp/192.168.88.1/22
 
 chmod bits
 
-  01000  sticky bit, restricted deletion
-  02000  set-group-ID
-  04000  set-user-ID
-  00100  execute/search by owner
-  00200  write by owner
-  00400  read by owner
+	01000  sticky bit, restricted deletion
+	02000  set-group-ID
+	04000  set-user-ID
+	00100  execute/search by owner
+	00200  write by owner
+	00400  read by owner
 
 pluma admin:///etc/fonts/local.conf
 
@@ -301,9 +301,9 @@ pluma admin:///etc/fonts/local.conf
 
 Разные программы
   
- 	zerofree - finds the unallocated blocks with non-zero value content in and fills them with zeroes.
- 	ncdu     - is a ncurses-based du viewer.
- 	plocate mlocate
+	zerofree - finds the unallocated blocks with non-zero value content in and fills them with zeroes.
+	ncdu     - is a ncurses-based du viewer.
+	plocate mlocate
 
 fstab
 
@@ -357,3 +357,27 @@ apt --fix-broken install
 Если тупо сделать full-upgrade сразу, тогда --fix-broken install не решает. 
 
 =====
+
+# Тест дисков sdcard
+
+	_____ SD Card __GB C__ A_
+
+	dmesg | tail
+	fdisk -l
+
+	--------------------------------------------------------------------
+	ioping -c 20 .
+
+
+	--------------------------------------------------------------------
+
+	fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=fiotest --filename=testfio --bs=4k --iodepth=64 --size=1G --readwrite=randrw --rwmixread=75
+
+	--------------------------------------------------------------------
+	fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=fiotest --filename=testfio --bs=4k --iodepth=64 --size=1G --readwrite=randread
+
+	--------------------------------------------------------------------
+	fio --name=randwrite --ioengine=libaio --iodepth=1 --rw=randwrite --bs=4k --direct=0 --size=1G --numjobs=2 --runtime=240 --group_reporting
+
+	====================================================================================
+
