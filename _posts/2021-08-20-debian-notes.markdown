@@ -3,6 +3,7 @@ layout: post
 title:  "Заметки про Debian"
 date:   2021-08-20 00:49:40 +0300
 categories: open info
+tags: linux
 ---
 
 Настройки
@@ -11,6 +12,14 @@ categories: open info
 	./conf/set-user.sh
 	wget ilych.github.io/files/icons_mytheme.tar.gz
 	wget ilych.github.io/files/themes_myMenta.tar.gz
+
+Образы
+
+	UPDATE 10 Jun 2023: As of Debian 12 (Bookworm), firmware is included in the normal Debian installer images.
+	https://gemmei.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso
+	https://mirror.accum.se/debian-cd/current/amd64/iso-cd/SHA256SUMS
+	https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/
+	https://cdimage.debian.org/cdimage/firmware/
 
 /etc/apt/source.list:
 
@@ -32,11 +41,17 @@ categories: open info
 	apt-get install openssh-server
 	apt-get install xserver-xorg xinit 
 	apt-get install mate-desktop-environment pavucontrol
-	apt-get install gnome-firmware mate-time-admin mate-power-statistics mate-system-log
+	apt-get install dconf-editor dconf-cli network-manager-gnome
+	apt-get install gnome-firmware mate-time-admin mate-power-statistics mate-system-log libnotify-bin
 	apt-get install --no-install-recommends firefox-esr
-	apt-get install gparted guake
+	apt-get install gparted guake curl
 	apt-get install ntfs-3g 
 	apt-get install mc netcat socat
+
+Не отключаться при закрытии крышки
+
+	/etc/systemd/logind.conf:
+	HandleLidSwitch=ignore
 
 VirtualBox Guest Additions kernel headers and build tools:	
 
@@ -66,7 +81,11 @@ VirtualBox Guest Additions kernel headers and build tools:
 	vm.vfs_cache_pressure=10
 	vm.dirty_background_bytes = 64001000
 	vm.dirty_bytes = 128001000
-	
+
+   # 12309: 
+   vm.overcommit_memory=2 
+   vm.overcommit_ratio=200
+
 
 Применить изменения без перезагрузки:
 	
@@ -142,6 +161,26 @@ set completion-ignore-case on
 
 Темы Guake описаны в /usr/lib/python3/dist-packages/guake/palettes.py. В настройках оформления выбрать тему как основу, затем переключиться на тему "Дополнительно" и поменять
 правую нижнюю палету (Background) на `#2D0922`, правую верхнюю на `#ECF0F1`.
+
+Тема mate-terminal:
+
+	полужирный, без гудка, Скопировать выделенный, подчёркнутый, 125 x 25
+	monospace regular 11
+	Цвет текста: #ECF0F1
+	Цвет текста: #2D0922
+	Прокрутка: 100000
+	Комбинации: -F10 -F1
+
+Перетаскивание окон по Alt marco:
+
+	dconf-editor: 
+	/org/mate/marco/general/mouse-button-modifier <Alt> -> <Super>
+
+mate-panel:
+
+	echo -e "[/]\nfont-family='Liberation Sans Narrow 24'\nforeground-color='238 238 236'" | dconf load /org/mate/desktop/peripherals/keyboard/indicator/ 
+	dconf dump /org/mate/desktop/peripherals/keyboard/indicator/
+
 
 Системное время брать из аппаратных часов:
 
@@ -242,6 +281,11 @@ NetworkManager:
   modprobe -c
   /lib/modules
   /lib/modules/modules.aliases
+
+disable wifi blinking
+
+	/etc/modprobe.d/wlan.conf:
+	options iwlwifi led_mode=1
 
 Зависает при загрузке при установке primus:
   
@@ -354,6 +398,26 @@ xclip
 	apt --fix-broken install
 
 	Если тупо сделать full-upgrade сразу, тогда --fix-broken install не решает. 
+
+
+set up and control loop devices
+	LOOP=$(sudo losetup --show -fP "${IMAGE_FILE}")
+	mount ${LOOP}p1 /mnt/tmp
+
+# pulseaudio
+ls -l /run/user/1000
+pulseaudio --start
+start-pulseaudio-x11
+
+# Screen turn off backlight
+xset dpms force off
+# Turn screen off after 30min inactivity
+xset dpms 1800
+
+
+# SETUID AND SETGID BITS
+
+
 
 # Тест дисков sdcard
 
